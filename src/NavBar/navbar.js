@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class NavBar extends Component {
      render() {
           return (
                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="/">CCNY Stats</a>
+                    <Link to="/" className="navbar-brand">CCNY Stats</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span className="navbar-toggler-icon"></span>
                     </button>
@@ -12,13 +13,13 @@ export default class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                          <ul className="navbar-nav mr-auto">
                               <li className="nav-item active">
-                                   <a className="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
+                                   <Link to="/" className="nav-link">Dashboard</Link>
                               </li>
                               <li className="nav-item">
-                                   <a className="nav-link" href="#players">Players</a>
+                                   <Link to="#players" className="nav-link">Players</Link>
                               </li>
                               <li className="nav-item">
-                                   <a className="nav-link" href="/testpage">Test Link</a>
+                                   <Link to="/testpage" className="nav-link">Test Link</Link>
                               </li>
                          </ul>
                          <form className="form-inline my-2 my-lg-0">
