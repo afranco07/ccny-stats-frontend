@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class Homepage extends Component {
+export default class NotFoundPage extends Component {
     render() {
         return (
             <div>
-                <p>The actual homepage</p>
+                <h1>Page Not Found!</h1>
             </div>
         );
     }
