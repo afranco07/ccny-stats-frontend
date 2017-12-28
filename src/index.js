@@ -6,15 +6,19 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Homepage from './Homepage/homepage.js';
+import NavBar from './NavBar/navbar.js';
 import NotFoundPage from './NotFound/notFound.js';
 
 const routes = (
     <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={Homepage} />
-            <Route exact path='/testpage' component={App} />
-            <Route component={NotFoundPage} />
-        </Switch>
+        <div>
+            <NavBar />
+            <Switch>
+                <Route exact path='/' component={Homepage} />
+                <Route exact path='/testpage' component={App} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </div>
     </BrowserRouter>
 );
 
