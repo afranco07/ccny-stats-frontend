@@ -9,7 +9,7 @@ export default class TeamPage extends Component {
             <div>
                 <Modal modalTitle="Team" />
                 <AddButton buttonText="Team" />
-                <List />
+                <List sourceURL="team" />
             </div>
         );
     }
