@@ -1,6 +1,56 @@
 import React, { Component } from 'react';
 
 export default class Modal extends Component {
+    constructor() {
+        super();
+        this.state = {
+            form: '',
+        };
+        this.getFormType = this.getFormType.bind(this);
+    }
+    componentDidMount() {
+        this.getFormType();
+    }
+    getFormType() {
+        let formHolder = '';
+        if (this.props.modalTitle === 'Team') {
+            formHolder = (
+                <form>
+                    <div className="form-row">
+                        <div className="col">
+                            <input type="text" className="form-control" placeholder="Team Name" />
+                        </div>
+                    </div>
+                </form>
+            );
+        } else {
+            formHolder = (
+                <form>
+                    <div className="form-group">
+                        <input type="text" className="form-control" id="firstName" placeholder="First Name" />
+                    </div>
+                    <div className="form-group">
+                        <input type="text" className="form-control" id="lastName" placeholder="Last Name" />
+                    </div>
+                    <div className="form-group">
+                        <select className="form-control" id="team">
+                            <option>Select Team</option>
+                            <option>CCNY</option>
+                            <option>Baruch</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <input type="text" className="form-control" id="jerseyNumber" placeholder="Jersey Number" />
+                    </div>
+                </form>
+            );
+        }
+        this.setState( () => {
+            return {
+                form: formHolder,
+            }
+        })
+    }
     render() {
         return (
             <div className="modal fade" id="addNewModal" tabIndex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
@@ -13,7 +63,7 @@ export default class Modal extends Component {
                             </button>
                         </div>
                         <div className="modal-body">
-                            ...
+                            { this.state.form }
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
