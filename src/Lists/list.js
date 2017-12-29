@@ -20,6 +20,9 @@ export default class List extends Component {
             return (
                 <Link to="" className="list-group-item list-group-item-action" key={index}>
                     {sourceItem.firstName + " " + sourceItem.lastName + " #" + sourceItem.jerseyNumber }
+                    <button type="button" className="close" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </Link>
             );
         });
@@ -31,6 +34,9 @@ export default class List extends Component {
             return (
                 <Link to="" className="list-group-item list-group-item-action" key={index}>
                     {sourceItem.name }
+                    <button type="button" className="close" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </Link>
             );
         });
