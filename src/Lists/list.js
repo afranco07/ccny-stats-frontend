@@ -16,14 +16,14 @@ export default class List extends Component {
     }
 
     getSourceLinkItems() {
-        fetch("http://localhost:8000/player")
+        fetch(this.props.sourceURL)
             .then( response => {
                 return response.json();
             })
             .then( jsonBody => {
-                let sourceLinkItems = jsonBody.map( sourceItem => {
+                let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
                     return (
-                        <Link to="" className="list-group-item list-group-item-action">
+                        <Link to="" className="list-group-item list-group-item-action" key={index}>
                             {sourceItem.firstName + " " + sourceItem.lastName}
                         </Link>
                     );
