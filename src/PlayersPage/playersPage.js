@@ -9,7 +9,7 @@ export default class PlayersPage extends Component {
             <div>
                 <Modal modalTitle="Player" />
                 <AddButton buttonText="Player" />
-                <List />
+                <List sourceURL="http://localhost:8000/player" />
             </div>
         );
     }
