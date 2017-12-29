@@ -16,7 +16,7 @@ export default class NavBar extends Component {
                                    <NavLink exact to="/" className="nav-link">Dashboard</NavLink>
                               </li>
                               <li className="nav-item">
-                                   <NavLink to="#players" className="nav-link">Players</NavLink>
+                                   <NavLink to="/players" className="nav-link">Players</NavLink>
                               </li>
                               <li className="nav-item">
                                     <NavLink to="/team" className="nav-link">Teams</NavLink>
