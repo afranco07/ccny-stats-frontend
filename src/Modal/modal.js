@@ -6,14 +6,23 @@ export default class Modal extends Component {
         this.state = {
             form: '',
             teamName: '',
+            firstName: '',
+            lastName: '',
+            jersey: '',
         };
         this.getFormType = this.getFormType.bind(this);
         this.handleTeamInput = this.handleTeamInput.bind(this);
+        this.handleFirstName = this.handleFirstName.bind(this);
+        this.handleLastName = this.handleLastName.bind(this);
+        this.handleJerseyNumber = this.handleJerseyNumber.bind(this);
         this.createNewTeam = this.createNewTeam.bind(this);
+        this.createNewPlayer = this.createNewPlayer.bind(this);
     }
+    
     componentDidMount() {
         this.getFormType();
     }
+
     getFormType() {
         let formHolder = '';
         if (this.props.modalTitle === 'Team') {
@@ -30,10 +39,10 @@ export default class Modal extends Component {
             formHolder = (
                 <form>
                     <div className="form-group">
-                        <input type="text" className="form-control" id="firstName" placeholder="First Name" />
+                        <input type="text" className="form-control" placeholder="First Name" onChange={this.handleFirstName} />
                     </div>
                     <div className="form-group">
-                        <input type="text" className="form-control" id="lastName" placeholder="Last Name" />
+                        <input type="text" className="form-control" placeholder="Last Name" onChange={this.handleLastName} />
                     </div>
                     <div className="form-group">
                         <select className="form-control" id="team">
@@ -43,7 +52,7 @@ export default class Modal extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <input type="text" className="form-control" id="jerseyNumber" placeholder="Jersey Number" />
+                        <input type="text" className="form-control" placeholder="Jersey Number" onChange={this.handleJerseyNumber} />
                     </div>
                 </form>
             );
@@ -56,7 +65,19 @@ export default class Modal extends Component {
     }
 
     handleTeamInput(event) {
-        this.setState({teamName: event.target.value});
+        this.setState({ teamName: event.target.value });
+    }
+
+    handleFirstName(event) {
+        this.setState({ firstName: event.target.value })
+    }
+
+    handleLastName(event) {
+        this.setState({ lastName: event.target.value })
+    }
+
+    handleJerseyNumber(event) {
+        this.setState({ jersey: event.target.value })
     }
 
     createNewTeam() {
@@ -71,6 +92,25 @@ export default class Modal extends Component {
             })
         };
         fetch('http://localhost:8000/team', postData);
+    }
+
+    createNewPlayer() {
+        let postData = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                teamid: 1,
+                jerseyNumber: this.state.jersey,
+                year: 1994,
+                position: 8,
+            })
+        };
+        fetch('http://localhost:8000/player', postData);
     }
 
     render() {
@@ -89,7 +129,7 @@ export default class Modal extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={this.createNewTeam}>Add Team</button>
+                            <button type="button" className="btn btn-primary" onClick={this.createNewPlayer} data-dismiss="modal">Add Team</button>
                         </div>
                     </div>
                 </div>
