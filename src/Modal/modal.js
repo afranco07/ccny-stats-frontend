@@ -5,8 +5,11 @@ export default class Modal extends Component {
         super();
         this.state = {
             form: '',
+            teamName: '',
         };
         this.getFormType = this.getFormType.bind(this);
+        this.handleTeamInput = this.handleTeamInput.bind(this);
+        this.createNewTeam = this.createNewTeam.bind(this);
     }
     componentDidMount() {
         this.getFormType();
@@ -18,7 +21,7 @@ export default class Modal extends Component {
                 <form>
                     <div className="form-row">
                         <div className="col">
-                            <input type="text" className="form-control" placeholder="Team Name" />
+                            <input type="text" className="form-control" placeholder="Team Name" onChange={this.handleTeamInput} />
                         </div>
                     </div>
                 </form>
@@ -51,6 +54,25 @@ export default class Modal extends Component {
             }
         })
     }
+
+    handleTeamInput(event) {
+        this.setState({teamName: event.target.value});
+    }
+
+    createNewTeam() {
+        let postData = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                teamName: this.state.teamName
+            })
+        };
+        fetch('http://localhost:8000/team', postData);
+    }
+
     render() {
         return (
             <div className="modal fade" id="addNewModal" tabIndex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
@@ -67,7 +89,7 @@ export default class Modal extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Add Team</button>
+                            <button type="button" className="btn btn-primary" onClick={this.createNewTeam}>Add Team</button>
                         </div>
                     </div>
                 </div>
