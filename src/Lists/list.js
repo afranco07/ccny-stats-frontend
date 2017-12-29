@@ -15,19 +15,41 @@ export default class List extends Component {
         this.getSourceLinkItems();
     }
 
+    getPlayers(jsonBody) {
+        let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
+            return (
+                <Link to="" className="list-group-item list-group-item-action" key={index}>
+                    {sourceItem.firstName + " " + sourceItem.lastName + " #" + sourceItem.jerseyNumber }
+                </Link>
+            );
+        });
+        return sourceLinkItems;
+    }
+
+    getTeams(jsonBody) {
+        let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
+            return (
+                <Link to="" className="list-group-item list-group-item-action" key={index}>
+                    {sourceItem.name }
+                </Link>
+            );
+        });
+        return sourceLinkItems;
+    }
+
     getSourceLinkItems() {
-        fetch(this.props.sourceURL)
+        const url = 'http://localhost:8000/' + this.props.sourceURL;
+        fetch(url)
             .then( response => {
                 return response.json();
             })
             .then( jsonBody => {
-                let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
-                    return (
-                        <Link to="" className="list-group-item list-group-item-action" key={index}>
-                            {sourceItem.firstName + " " + sourceItem.lastName}
-                        </Link>
-                    );
-                });
+                let sourceLinkItems = [];
+                if (this.props.sourceURL === 'player') {
+                    sourceLinkItems = this.getPlayers(jsonBody);
+                } else {
+                    sourceLinkItems = this.getTeams(jsonBody);
+                }
                 this.setState( () => {
                     return {
                         listItems: sourceLinkItems,
