@@ -4,6 +4,7 @@ export default class Modal extends Component {
     constructor() {
         super();
         this.state = {
+            title: '',
             form: '',
             teamName: '',
             firstName: '',
@@ -17,10 +18,16 @@ export default class Modal extends Component {
         this.handleJerseyNumber = this.handleJerseyNumber.bind(this);
         this.createNewTeam = this.createNewTeam.bind(this);
         this.createNewPlayer = this.createNewPlayer.bind(this);
+        this.submitToDatabase = this.submitToDatabase.bind(this);
     }
     
     componentDidMount() {
         this.getFormType();
+        this.setState( () => {
+            return {
+                title: this.props.modalTitle,
+            };
+        });
     }
 
     getFormType() {
@@ -60,8 +67,8 @@ export default class Modal extends Component {
         this.setState( () => {
             return {
                 form: formHolder,
-            }
-        })
+            };
+        });
     }
 
     handleTeamInput(event) {
@@ -113,6 +120,14 @@ export default class Modal extends Component {
         fetch('http://localhost:8000/player', postData);
     }
 
+    submitToDatabase() {
+        if (this.state.title === 'Team') {
+            this.createNewTeam();
+        } else {
+            this.createNewPlayer();
+        }
+    }
+
     render() {
         return (
             <div className="modal fade" id="addNewModal" tabIndex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
@@ -129,7 +144,7 @@ export default class Modal extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={this.createNewPlayer} data-dismiss="modal">Add Team</button>
+                            <button type="button" className="btn btn-primary" onClick={this.submitToDatabase} data-dismiss="modal">Add Team</button>
                         </div>
                     </div>
                 </div>
