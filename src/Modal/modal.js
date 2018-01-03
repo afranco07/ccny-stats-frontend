@@ -146,7 +146,7 @@ export default class Modal extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={this.submitToDatabase} data-dismiss="modal">Add Team</button>
+                            <button type="button" className="btn btn-primary" onClick={this.submitToDatabase} data-dismiss="modal">Add {this.props.modalTitle}</button>
                         </div>
                     </div>
                 </div>
