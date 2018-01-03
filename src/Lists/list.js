@@ -9,10 +9,18 @@ export default class List extends Component {
             listItems: [],
         }
         this.getSourceLinkItems = this.getSourceLinkItems.bind(this);
+        this.getPlayers = this.getPlayers.bind(this);
+        this.getTeams = this.getTeams.bind(this);
     }
 
     componentDidMount() {
         this.getSourceLinkItems();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.reload !== nextProps.reload) {
+            this.getSourceLinkItems();
+        }
     }
 
     getPlayers(jsonBody) {

@@ -98,7 +98,8 @@ export default class Modal extends Component {
                 teamName: this.state.teamName
             })
         };
-        fetch('http://localhost:8000/team', postData);
+        fetch('http://localhost:8000/team', postData)
+            .then( () => this.props.reload());
     }
 
     createNewPlayer() {
@@ -117,7 +118,8 @@ export default class Modal extends Component {
                 position: 8,
             })
         };
-        fetch('http://localhost:8000/player', postData);
+        fetch('http://localhost:8000/player', postData)
+            .then( () => this.props.reload());
     }
 
     submitToDatabase() {
@@ -144,7 +146,7 @@ export default class Modal extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={this.submitToDatabase} data-dismiss="modal">Add Team</button>
+                            <button type="button" className="btn btn-primary" onClick={this.submitToDatabase} data-dismiss="modal">Add {this.props.modalTitle}</button>
                         </div>
                     </div>
                 </div>
