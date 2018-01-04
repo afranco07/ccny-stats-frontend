@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ModalOptions from './modalOptions.js';
 
 export default class Modal extends Component {
     constructor() {
@@ -42,7 +43,7 @@ export default class Modal extends Component {
                     </div>
                 </form>
             );
-        } else {
+        } else if (this.props.modalTitle === 'Player') {
             formHolder = (
                 <form>
                     <div className="form-group">
@@ -61,6 +62,22 @@ export default class Modal extends Component {
                     <div className="form-group">
                         <input type="text" className="form-control" placeholder="Jersey Number" onChange={this.handleJerseyNumber} />
                     </div>
+                </form>
+            );
+        } else {
+            formHolder = (
+                <form>
+                    <ModalOptions title="Team" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
+                    <ModalOptions title="Player" />
                 </form>
             );
         }
