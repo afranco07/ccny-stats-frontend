@@ -7,9 +7,9 @@ export default class GamePage extends Component {
     render() {
         return (
             <div>
-                <Modal />
-                <AddButton />
-                <List />
+                <Modal modalTitle="Game" />
+                <AddButton buttonText="Game" />
+                <List sourceURL="game" />
             </div>
         );
     }
