@@ -62,13 +62,7 @@ export default class Modal extends Component {
                     <div className="form-group">
                         <input type="text" className="form-control" placeholder="Last Name" onChange={this.handleLastName} />
                     </div>
-                    <div className="form-group">
-                        <select className="form-control" id="team">
-                            <option>Select Team</option>
-                            <option>CCNY</option>
-                            <option>Baruch</option>
-                        </select>
-                    </div>
+                    <ModalOptions title="Team" />
                     <div className="form-group">
                         <input type="text" className="form-control" placeholder="Jersey Number" onChange={this.handleJerseyNumber} />
                     </div>
