@@ -27,7 +27,7 @@ export default class List extends Component {
         let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
             return (
                 <Link to="" className="list-group-item list-group-item-action" key={index}>
-                    {sourceItem.firstName + " " + sourceItem.lastName + " #" + sourceItem.jerseyNumber }
+                    { sourceItem.firstName + " " + sourceItem.lastName + " #" + sourceItem.jerseyNumber }
                     <button type="button" className="close" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -41,13 +41,27 @@ export default class List extends Component {
         let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
             return (
                 <Link to="" className="list-group-item list-group-item-action" key={index}>
-                    {sourceItem.name }
+                    { sourceItem.name }
                     <button type="button" className="close" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </Link>
             );
         });
+        return sourceLinkItems;
+    }
+
+    getGames(jsonBody) {
+        let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
+            return (
+                <Link to="" className="list-group-item list-group-item-action" key={index}>
+                    { sourceItem.Team.name }
+                    <button type="button" className="close" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </Link>
+            );
+        })
         return sourceLinkItems;
     }
 
@@ -61,8 +75,10 @@ export default class List extends Component {
                 let sourceLinkItems = [];
                 if (this.props.sourceURL === 'player') {
                     sourceLinkItems = this.getPlayers(jsonBody);
-                } else {
+                } else if (this.props.sourceURL === 'team') {
                     sourceLinkItems = this.getTeams(jsonBody);
+                } else {
+                    sourceLinkItems = this.getGames(jsonBody);
                 }
                 this.setState( () => {
                     return {

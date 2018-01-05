@@ -10,6 +10,7 @@ import NavBar from './NavBar/navbar.js';
 import NotFoundPage from './NotFound/notFound.js';
 import TeamPage from './TeamPage/teamPage.js';
 import PlayersPage from './PlayersPage/playersPage.js';
+import GamePage from './GamePage/gamepage.js';
 
 const routes = (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const routes = (
                 <Route exact path='/testpage' component={App} />
                 <Route path='/team' component={TeamPage} />
                 <Route path='/players' component={PlayersPage} />
+                <Route path='/games' component={GamePage} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>
