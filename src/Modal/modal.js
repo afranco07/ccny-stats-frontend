@@ -11,6 +11,15 @@ export default class Modal extends Component {
             firstName: '',
             lastName: '',
             jersey: '',
+            player1: '',
+            player2: '',
+            player3: '',
+            player4: '',
+            player5: '',
+            player6: '',
+            player8: '',
+            player9: '',
+            player10: '',
         };
         this.getFormType = this.getFormType.bind(this);
         this.handleTeamInput = this.handleTeamInput.bind(this);
@@ -20,6 +29,7 @@ export default class Modal extends Component {
         this.createNewTeam = this.createNewTeam.bind(this);
         this.createNewPlayer = this.createNewPlayer.bind(this);
         this.submitToDatabase = this.submitToDatabase.bind(this);
+        this.handleLineup = this.handleLineup.bind(this);
     }
     
     componentDidMount() {
@@ -67,17 +77,17 @@ export default class Modal extends Component {
         } else {
             formHolder = (
                 <form>
-                    <ModalOptions title="Team" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
-                    <ModalOptions title="Player" />
+                    <ModalOptions title="Team" modalID="teamName" selectChange={this.handleTeamInput} />
+                    <ModalOptions title="Player" modalID="player1" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player2" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player3" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player4" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player5" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player6" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player7" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player8" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player9" selectChange={this.handleLineup} />
+                    <ModalOptions title="Player" modalID="player10" selectChange={this.handleLineup} />
                 </form>
             );
         }
@@ -89,7 +99,7 @@ export default class Modal extends Component {
     }
 
     handleTeamInput(event) {
-        this.setState({ teamName: event.target.value });
+        this.setState({ teamName: event.target.value, teamID: event.target.value });
     }
 
     handleFirstName(event) {
@@ -102,6 +112,10 @@ export default class Modal extends Component {
 
     handleJerseyNumber(event) {
         this.setState({ jersey: event.target.value })
+    }
+
+    handleLineup(event) {
+        this.setState({ [event.target.id]: event.target.value });
     }
 
     createNewTeam() {
@@ -139,11 +153,38 @@ export default class Modal extends Component {
             .then( () => this.props.reload());
     }
 
+    createNewGame() {
+        let postData = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                teamid : this.state.teamID,
+                player1: this.state.player1,
+                player2: this.state.player2,
+                player3: this.state.player3,
+                player4: this.state.player4,
+                player5: this.state.player5,
+                player6: this.state.player6,
+                player7: this.state.player7,
+                player8: this.state.player8,
+                player9: this.state.player9,
+                player10: this.state.player10,
+            })
+        };
+        fetch('http://localhost:8000/game', postData)
+        .then( () => this.props.reload());
+    }
+
     submitToDatabase() {
         if (this.state.title === 'Team') {
             this.createNewTeam();
-        } else {
+        } else if (this.state.title === 'Player') {
             this.createNewPlayer();
+        } else {
+            this.createNewGame();
         }
     }
 
