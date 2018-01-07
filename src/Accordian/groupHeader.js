@@ -7,7 +7,7 @@ export default class GroupHeader extends Component {
                 <div className="card-header" role="tab" id={"heading" + this.props.groupNumber}>
                     <h5 className="mb-0">
                         <a data-toggle="collapse" href={"#collapse" + this.props.groupNumber} role="button" aria-expanded="true" aria-controls={"collapse" + this.props.groupNumber}>
-                            Group Item #{this.props.groupNumber}
+                            {this.props.name} #{this.props.number}
                         </a>
                     </h5>
                 </div>
