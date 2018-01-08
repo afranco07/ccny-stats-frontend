@@ -34,6 +34,9 @@ export default class Accordian extends Component {
                 };
             });
         })
+        .catch( () => {
+            console.log('Error getting lineup');
+        });
     }
 
     render() {
