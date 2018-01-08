@@ -23,7 +23,7 @@ const routes = (
                 <Route path='/team' component={TeamPage} />
                 <Route path='/players' component={PlayersPage} />
                 <Route path='/games' component={GamePage} />
-                <Route path='game/:id' component={PitchPage} />
+                <Route path='/game/:id' component={PitchPage} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>
