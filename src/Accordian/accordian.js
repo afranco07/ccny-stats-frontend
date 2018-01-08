@@ -15,7 +15,7 @@ export default class Accordian extends Component {
     }
 
     getLineup() {
-        const url = 'http://localhost:8000/game/1';
+        const url = 'http://localhost:8000/game/' + this.props.gameID;
         fetch(url)
         .then( response => {
             return response.json();
