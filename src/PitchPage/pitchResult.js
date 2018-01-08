@@ -6,6 +6,9 @@ export default class PitchResult extends Component {
             <div className="card">
                 <div className="card-body">
                     <select className="form-control">
+                        <option>Select Pitch Result</option>
+                        <option>Take</option>
+                        <option>Fouled Off</option>
                         <option>0</option>
                         <option>1</option>
                         <option>2</option>
