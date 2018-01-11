@@ -10,6 +10,26 @@ export default class GroupBody extends Component {
             ballStrike: '',
             result: '',
         };
+        this.radioButtonChanged = this.radioButtonChanged.bind(this);
+        this.resultDropChanged = this.resultDropChanged.bind(this);
+    }
+
+    radioButtonChanged(event) {
+        let radioValue = event.target.value;
+        this.setState( () => {
+            return {
+                ballStrike: radioValue,
+            };
+        }, () => console.log(this.state.ballStrike));
+    }
+
+    resultDropChanged(event) {
+        let resultValue = event.target.value;
+        this.setState( () => {
+            return {
+                result: resultValue,
+            }
+        }, () => console.log(this.state.result));
     }
 
     render() {
@@ -18,10 +38,10 @@ export default class GroupBody extends Component {
                 <div className="card-body">
                     <div className="row">
                         <div className="col-md col-sm-12">
-                            <BallOrStrike />
+                            <BallOrStrike handleRadioButton={this.radioButtonChanged} />
                         </div>
                         <div className="col-md col-sm-12">
-                            <PitchResult />
+                            <PitchResult handleResult={this.resultDropChanged} />
                         </div>
                         <div className="col-md col-sm-12">
                             <SubmitPitch />
