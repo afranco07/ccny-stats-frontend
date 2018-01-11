@@ -5,7 +5,7 @@ export default class PitchResult extends Component {
         return (
             <div className="card">
                 <div className="card-body">
-                    <select className="form-control">
+                    <select className="form-control" onChange={this.props.handleResult}>
                         <option>Select Pitch Result</option>
                         <option>Take</option>
                         <option>Fouled Off</option>
