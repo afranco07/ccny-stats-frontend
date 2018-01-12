@@ -10,7 +10,7 @@ export default class SubmitPitch extends Component {
         return (
             <div className="card">
                 <div className="card-body">
-                    <button style={buttonStyle} type="button" className="btn btn-primary">Submit</button>
+                    <button style={buttonStyle} onClick={this.props.submitToDatabase} type="button" className="btn btn-primary">Submit</button>
                 </div>
             </div>
         );
