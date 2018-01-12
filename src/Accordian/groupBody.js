@@ -12,6 +12,7 @@ export default class GroupBody extends Component {
         };
         this.radioButtonChanged = this.radioButtonChanged.bind(this);
         this.resultDropChanged = this.resultDropChanged.bind(this);
+        this.submitPitchToDatabase = this.submitPitchToDatabase.bind(this);
     }
 
     radioButtonChanged(event) {
@@ -32,6 +33,37 @@ export default class GroupBody extends Component {
         }, () => console.log(this.state.result));
     }
 
+    submitPitchToDatabase() {
+        const pitchUrl = 'http://localhost:8000/pitch';
+        const playerUrl = 'http://localhost:8000/player/' + this.props.groupNumber;
+        let postData = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ballStrike: this.state.ballStrike,
+                result: this.state.result,
+                player: this.props.groupNumber
+            })
+        };
+        let playerData = {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                result: this.state.result,
+                ballStrike: this.state.ballStrike,
+            })
+        }
+        fetch(pitchUrl, postData);
+        fetch(playerUrl, playerData);
+        console.log('Sent to database!')
+    }
+
     render() {
         return (
             <div id={"collapse" + this.props.groupNumber} className="collapse" role="tabpanel" aria-labelledby={"heading" + this.props.groupNumber} data-parent="#accordian">
@@ -44,7 +76,7 @@ export default class GroupBody extends Component {
                             <PitchResult handleResult={this.resultDropChanged} />
                         </div>
                         <div className="col-md col-sm-12">
-                            <SubmitPitch />
+                            <SubmitPitch submitToDatabase={this.submitPitchToDatabase} />
                         </div>
                     </div>
                 </div>
