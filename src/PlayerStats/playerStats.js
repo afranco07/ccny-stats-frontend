@@ -51,7 +51,8 @@ export default class PlayerStats extends Component {
             <div className="container">
                 <div className="card">
                     <div className="card-body">
-                        <BarChart width={600} height={300} data={data} margin={{top: 5, right: 20, left: 20, bottom: 5}}>
+                        <ResponsiveContainer width="100%" height={200}>
+                        <BarChart data={data} margin={{top: 5, right: 20, left: 20, bottom: 5}}>
                             <XAxis dataKey="name" />
                             <YAxis />
                             <CartesianGrid strokeDasharray="3 3" />
@@ -59,6 +60,7 @@ export default class PlayerStats extends Component {
                             <Legend />
                             <Bar dataKey="amount" fill="#8884d8" />
                         </BarChart>
+                        </ResponsiveContainer>
                     </div>
                 </div>
             </div>
