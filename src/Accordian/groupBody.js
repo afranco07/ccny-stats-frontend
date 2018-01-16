@@ -9,10 +9,12 @@ export default class GroupBody extends Component {
         this.state = {
             ballStrike: '',
             result: '',
+            didSwing: false,
         };
         this.radioButtonChanged = this.radioButtonChanged.bind(this);
         this.resultDropChanged = this.resultDropChanged.bind(this);
         this.submitPitchToDatabase = this.submitPitchToDatabase.bind(this);
+        this.checkBoxChanged = this.checkBoxChanged.bind(this)
     }
 
     radioButtonChanged(event) {
@@ -22,6 +24,16 @@ export default class GroupBody extends Component {
                 ballStrike: radioValue,
             };
         }, () => console.log(this.state.ballStrike));
+    }
+
+    checkBoxChanged(event) {
+        let checkValue = event.target.checked;
+        console.log(checkValue);
+        this.setState( () => {
+            return {
+                didSwing: checkValue,
+            };
+        });
     }
 
     resultDropChanged(event) {
@@ -57,6 +69,7 @@ export default class GroupBody extends Component {
             body: JSON.stringify({
                 result: this.state.result,
                 ballStrike: this.state.ballStrike,
+                swing: this.state.didSwing,
             })
         }
         fetch(pitchUrl, postData);
@@ -70,7 +83,7 @@ export default class GroupBody extends Component {
                 <div className="card-body">
                     <div className="row">
                         <div className="col-md col-sm-12">
-                            <BallOrStrike handleRadioButton={this.radioButtonChanged} />
+                            <BallOrStrike handleRadioButton={this.radioButtonChanged} handleCheck={this.checkBoxChanged} />
                         </div>
                         <div className="col-md col-sm-12">
                             <PitchResult handleResult={this.resultDropChanged} />
