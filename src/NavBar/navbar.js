@@ -24,9 +24,6 @@ export default class NavBar extends Component {
                               <li className="nav-item">
                                     <NavLink to="/games" className="nav-link">Games</NavLink>
                               </li>
-                              <li className="nav-item">
-                                   <NavLink to="/testpage" className="nav-link">Test Link</NavLink>
-                              </li>
                          </ul>
                          <form className="form-inline my-2 my-lg-0">
                               <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
