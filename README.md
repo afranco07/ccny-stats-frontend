@@ -1,7 +1,7 @@
 # IMPORTANT - BEFORE YOU DO ANYTHING
 If you want to run/develop this locally you must:
 1. Clone the backend for this project ([Link to repo](https://github.com/afranco07/ccny-stats-backend)) and have it running in a separate terminal window
-2. Have `PostgreSQL` installed, and have a database `ccny_development` created, and a user called `ctp_user` created as well
+2. Have `PostgreSQL` installed, and have a database `ccny_development` created (or another name), and a `PostgreSQL` user as well 
 3. Clone this repo using `git clone https://github.com/afranco07/ccny-stats-frontend.git`
 
 All of this is explained further in the ccny-backend-repo
