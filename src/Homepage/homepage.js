@@ -4,7 +4,7 @@ export default class Homepage extends Component {
     render() {
         return (
             <div>
-                <p>The actual homepage</p>
+                <p>Dashboard</p>
             </div>
         );
     }

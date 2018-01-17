@@ -26,7 +26,7 @@ export default class List extends Component {
     getPlayers(jsonBody) {
         let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
             return (
-                <Link to="" className="list-group-item list-group-item-action" key={index}>
+                <Link to={"/player/" + sourceItem.id} className="list-group-item list-group-item-action" key={index}>
                     { sourceItem.firstName + " " + sourceItem.lastName + " #" + sourceItem.jerseyNumber }
                     <button type="button" className="close" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
@@ -54,7 +54,7 @@ export default class List extends Component {
     getGames(jsonBody) {
         let sourceLinkItems = jsonBody.map( (sourceItem, index) => {
             return (
-                <Link to="" className="list-group-item list-group-item-action" key={index}>
+                <Link to={"/game/" + sourceItem.id} className="list-group-item list-group-item-action" key={index}>
                     { sourceItem.Team.name }
                     <button type="button" className="close" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
