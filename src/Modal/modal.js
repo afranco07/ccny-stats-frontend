@@ -123,7 +123,7 @@ export default class Modal extends Component {
                 teamName: this.state.teamName
             })
         };
-        fetch('http://localhost:8000/team', postData)
+        fetch('https://ccnybackend.herokuapp.com/team', postData)
             .then( () => this.props.reload());
     }
 
@@ -143,7 +143,7 @@ export default class Modal extends Component {
                 position: 8,
             })
         };
-        fetch('http://localhost:8000/player', postData)
+        fetch('https://ccnybackend.herokuapp.com/player', postData)
             .then( () => this.props.reload());
     }
 
@@ -168,7 +168,7 @@ export default class Modal extends Component {
                 player10: this.state.player10,
             })
         };
-        fetch('http://localhost:8000/game', postData)
+        fetch('https://ccnybackend.herokuapp.com/game', postData)
         .then( () => this.props.reload());
     }
 

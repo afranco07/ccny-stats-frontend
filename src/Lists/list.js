@@ -66,7 +66,7 @@ export default class List extends Component {
     }
 
     getSourceLinkItems() {
-        const url = 'http://localhost:8000/' + this.props.sourceURL;
+        const url = 'https://ccnybackend.herokuapp.com/' + this.props.sourceURL;
         fetch(url)
             .then( response => {
                 return response.json();

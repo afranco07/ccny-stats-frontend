@@ -15,7 +15,7 @@ export default class Accordian extends Component {
     }
 
     getLineup() {
-        const url = 'http://localhost:8000/game/' + this.props.gameID;
+        const url = 'https://ccnybackend.herokuapp.com/game/' + this.props.gameID;
         fetch(url)
         .then( response => {
             return response.json();

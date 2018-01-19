@@ -31,7 +31,7 @@ export default class PlayerStats extends Component {
     }
 
     getPlayerStats() {
-        let url = 'http://localhost:8000/player/' + this.props.match.params.id;
+        let url = 'https://ccnybackend.herokuapp.com/player/' + this.props.match.params.id;
         fetch(url)
         .then( response => {
             return response.json();
