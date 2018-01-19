@@ -19,7 +19,7 @@ export default class ModalOptions extends Component {
     }
 
     getPlayers() {
-        const url = 'http://localhost:8000/player';
+        const url = 'https://ccnybackend.herokuapp.com/player';
         fetch(url)
         .then( response => {
             return response.json();
@@ -38,7 +38,7 @@ export default class ModalOptions extends Component {
     }
 
     getTeams() {
-        const url = 'http://localhost:8000/team';
+        const url = 'https://ccnybackend.herokuapp.com/team';
         fetch(url)
         .then( response => {
             return response.json();
