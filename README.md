@@ -1,3 +1,6 @@
+# Live Demo
+View a live demo of this app at: https://ccnystats.herokuapp.com/
+
 # IMPORTANT - BEFORE YOU DO ANYTHING
 If you want to run/develop this locally you must:
 1. Clone the backend for this project ([Link to repo](https://github.com/afranco07/ccny-stats-backend)) and have it running in a separate terminal window
