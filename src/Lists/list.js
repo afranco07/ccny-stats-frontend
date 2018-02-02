@@ -34,6 +34,7 @@ export default class List extends Component {
                 </Link>
             );
         });
+        this.props.increasePercent(50);
         return sourceLinkItems;
     }
 
@@ -48,6 +49,7 @@ export default class List extends Component {
                 </Link>
             );
         });
+        this.props.increasePercent(50);
         return sourceLinkItems;
     }
 
@@ -61,7 +63,8 @@ export default class List extends Component {
                     </button>
                 </Link>
             );
-        })
+        });
+        this.props.increasePercent(50);
         return sourceLinkItems;
     }
 
@@ -85,6 +88,7 @@ export default class List extends Component {
                         listItems: sourceLinkItems,
                     };
                 });
+                this.props.increasePercent(100);
             })
             .catch( () => {
                 console.log("Error converting json object to list items");
