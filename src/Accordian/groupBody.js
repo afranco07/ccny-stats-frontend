@@ -46,8 +46,8 @@ export default class GroupBody extends Component {
     }
 
     submitPitchToDatabase() {
-        const pitchUrl = 'http://localhost:8000/pitch';
-        const playerUrl = 'http://localhost:8000/player/' + this.props.groupNumber;
+        const pitchUrl = 'https://ccnybackend.herokuapp.com/pitch';
+        const playerUrl = 'https://ccnybackend.herokuapp.com/player/' + this.props.groupNumber;
         let postData = {
             method: "POST",
             headers: {
