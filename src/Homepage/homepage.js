@@ -4,7 +4,9 @@ export default class Homepage extends Component {
     render() {
         return (
             <div>
-                <p>Dashboard</p>
+                <h1>Welcome to CCNY Stats!</h1>
+                <h3>This page is currently under construction...</h3>
+                <p>Head over to the over pages by clicking the link on the navigation bar</p>
             </div>
         );
     }
